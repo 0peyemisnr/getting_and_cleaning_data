@@ -5,16 +5,16 @@ testData <- read.table("test/X_test.txt")
 trainData <- read.table("train/X_train.txt")
 X <- rbind(testData, trainData)
 
-## Garbage collection
+## Garbage collection center
 rm(testData)
 rm(trainData)
 
-## Read subjects and combine
+## Read subjects and combine data
 testSub <- read.table("test/subject_test.txt")
 trainSub <- read.table("train/subject_train.txt")
 S <- rbind(testSub, trainSub)
 
-## Garbage collection
+## Garbage collection center
 rm(testSub)
 rm(trainSub)
 
@@ -23,7 +23,7 @@ testLabel <- read.table("test/y_test.txt")
 trainLabel <- read.table("train/y_train.txt")
 Y <- rbind(testLabel, trainLabel)
 
-## Garbage collection
+## Garbage collection center
 rm(testLabel)
 rm(trainLabel)
 
@@ -36,7 +36,7 @@ features <- featuresList$V2
 ## Logical Vector to keep only std and mean columns
 keepColumns <- grepl("(std|mean[^F])", features, perl=TRUE)
 
-## Keep only data we want, and name it human readable
+## Keep only the required data, and name it human readable
 X <- X[, keepColumns]
 names(X) <- features[keepColumns]
 names(X) <- gsub("\\(|\\)", "", names(X))
